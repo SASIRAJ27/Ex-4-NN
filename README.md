@@ -158,34 +158,6 @@ print(classification_report(y_test,predictions))
 ### Output:
 ![image](https://github.com/DhanushPalani/Ex-4-NN/assets/121594640/f6526de2-aab9-4dc0-9a90-b2035d9cb36e)
 
-### Program:
-```
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
-arr = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Species']
-df = pd.read_csv(url, names=arr)
-print(df.head())
-a = df.iloc[:, 0:4]
-b = df.select_dtypes(include=[object])
-b = df.iloc[:,4:5]
-training_a, testing_a, training_b, testing_b = train_test_split(a, b, test_size = 0.25)
-myscaler = StandardScaler()
-myscaler.fit(training_a)
-training_a = myscaler.transform(training_a)
-testing_a = myscaler.transform(testing_a)
-m1 = MLPClassifier(hidden_layer_sizes=(12, 13, 14), activation='relu', solver='adam', max_iter=2500)
-m1.fit(training_a, training_b.values.ravel())
-predicted_values = m1.predict(testing_a)
-print(confusion_matrix(testing_b,predicted_values))
-print(classification_report(testing_b,predicted_values))
-```
-### Output:
-![image](https://github.com/DhanushPalani/Ex-4-NN/assets/121594640/52a7f6a3-17ed-464f-9571-f14c63506da1)
 
 <H3>Result:</H3>
 Thus, MLP is implemented for multi-classification using python.
